@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SignIn</title>
+    <link rel="stylesheet" href="reset.html" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </head>
+  <body>
+    <div class="min-h-[100vh] flex flex-col justify-center items-center">
+      <div class="shadow-md px-4 py-6">
+        <p class="text-center text-2xl">Enter The Code</p>
+        <form>
+          <div class="flex justify-center gap-2 my-6">
+            <input
+              class="w-12 h-12 text-center outline-0 border border-indigo-400 rounded-md shadow-sm focus:border-2 focus:border-indigo-600"
+              type="text"
+              maxlength="1"
+              min="0"
+              max="9"
+              required
+            />
+            <input
+              class="w-12 h-12 text-center outline-0 border border-indigo-400 rounded-md shadow-sm focus:border-2 focus:border-indigo-600"
+              type="text"
+              maxlength="1"
+              min="0"
+              max="9"
+              required
+            />
+            <input
+              class="w-12 h-12 text-center outline-0 border border-indigo-400 rounded-md shadow-sm focus:border-2 focus:border-indigo-600"
+              type="text"
+              maxlength="1"
+              min="0"
+              max="9"
+              required
+            />
+            <input
+              class="w-12 h-12 text-center outline-0 border border-indigo-400 rounded-md shadow-sm focus:border-2 focus:border-indigo-600"
+              type="text"
+              maxlength="1"
+              min="0"
+              max="9"
+              required
+            />
+            <input
+              class="w-12 h-12 text-center outline-0 border border-indigo-400 rounded-md shadow-sm focus:border-2 focus:border-indigo-600"
+              type="text"
+              maxlength="1"
+              min="0"
+              max="9"
+              required
+            />
+            <input
+              class="w-12 h-12 text-center outline-0 border border-indigo-400 rounded-md shadow-sm focus:border-2 focus:border-indigo-600"
+              type="text"
+              maxlength="1"
+              min="0"
+              max="9"
+              required
+            />
+          </div>
+        </form>
+        <button
+          class="w-full cursor-pointer bg-indigo-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          type="button"
+          onclick="getData()"
+        >
+          Verify Code
+        </button>
+        <p
+          onclick="reSend()"
+          class="mt-3 text-end text-sm/6 text-gray-500 cursor-pointer"
+        >
+          don't get the code?
+          <span class="font-semibold text-indigo-600">Resend</span>
+        </p>
+      </div>
+    </div>
+    <script src="reset.js"></script>
+  </body>
+</html>
