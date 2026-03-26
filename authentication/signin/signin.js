@@ -1,6 +1,15 @@
 window.onload = function () {
   if (localStorage.getItem("token")) {
-    window.location.href = "../../index.html";
+    Swal.fire({
+      icon: "info",
+      title: "You are already signed in",
+      text: "Redirecting to home page after 2 seconds",
+      timer: 2000,
+      timerProgressBar: true,
+      showConfirmButton: false,
+    }).then(() => {
+      window.location.href = "../../index.html";
+    });
   }
 };
 

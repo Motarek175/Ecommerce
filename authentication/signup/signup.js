@@ -39,7 +39,7 @@ function getData() {
     Swal.fire({
       icon: "error",
       title: "Oops...",
-      text: "Enter valid phone number! Must be 11 digits and start with 01",
+      text: "Enter valid phone number! Must be 11 digits and start with 010 or 011 or 012 or 015 without any spaces",
     });
   } else {
     calling(data);
