@@ -150,49 +150,8 @@ async function addToCart(prodId) {
   document.querySelector(".loader").classList.remove("hidden");
   document.querySelector(".loader").classList.add("fixed");
   let numOfCart = parseInt(document.querySelector(".numOfCartItems").innerHTML);
-  let response = await fetch(`https://ecommerce.routemisr.com/api/v2/cart`, {
-    method: "POST",
-    headers: {
-      token: localStorage.getItem("token"),
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      productId: prodId,
-    }),
-  });
-  response.json().then((result) => {
-    if (result.numOfCartItems === numOfCart) {
-      Swal.fire({
-        icon: "info",
-        title:
-          "Product already added to cart! but the quantity has been updated by 1",
-        showConfirmButton: false,
-        timer: 2000,
-      }).then(() => {
-        document.querySelector(".loader").classList.remove("fixed");
-        document.querySelector(".loader").classList.add("hidden");
-      });
-    } else {
-      Swal.fire({
-        icon: "success",
-        title: "Product added to cart successfully",
-        showConfirmButton: false,
-        timer: 1000,
-      }).then(() => {
-        getCartnums(localStorage.getItem("token"));
-      });
-    }
-  });
-}
-
-async function addToWishlist(prodId) {
-  document.querySelector(".loader").classList.remove("hidden");
-  document.querySelector(".loader").classList.add("fixed");
-  let numOfWish = parseInt(document.querySelector(".numOfWishItems").innerHTML);
-
-  let response = await fetch(
-    `https://ecommerce.routemisr.com/api/v1/wishlist`,
-    {
+  if (localStorage.getItem("token")) {
+    let response = await fetch(`https://ecommerce.routemisr.com/api/v2/cart`, {
       method: "POST",
       headers: {
         token: localStorage.getItem("token"),
@@ -201,30 +160,114 @@ async function addToWishlist(prodId) {
       body: JSON.stringify({
         productId: prodId,
       }),
-    },
-  );
-  response.json().then((result) => {
-    if (result.data.length === numOfWish) {
-      Swal.fire({
-        icon: "info",
-        title: "Product already added to wishlist",
-        showConfirmButton: false,
-        timer: 1500,
-      }).then(() => {
-        document.querySelector(".loader").classList.remove("fixed");
-        document.querySelector(".loader").classList.add("hidden");
-      });
-    } else {
-      Swal.fire({
-        icon: "success",
-        title: "Product added to wishlist successfully",
-        showConfirmButton: false,
-        timer: 1500,
-      }).then(() => {
-        getWishlistNums(localStorage.getItem("token"));
-      });
-    }
-  });
+    });
+    response.json().then((result) => {
+      if (result.numOfCartItems === numOfCart) {
+        Swal.fire({
+          icon: "info",
+          title:
+            "Product already added to cart! but the quantity has been updated by 1",
+          showConfirmButton: false,
+          timer: 2000,
+        }).then(() => {
+          document.querySelector(".loader").classList.remove("fixed");
+          document.querySelector(".loader").classList.add("hidden");
+        });
+      } else {
+        Swal.fire({
+          icon: "success",
+          title: "Product added to cart successfully",
+          showConfirmButton: false,
+          timer: 1000,
+        }).then(() => {
+          getCartnums(localStorage.getItem("token"));
+        });
+      }
+    });
+  } else {
+    document.querySelector(".loader").classList.remove("fixed");
+    document.querySelector(".loader").classList.add("hidden");
+    Swal.fire({
+      icon: "info",
+      title: "You are not signed in",
+      text: "You should sign in first to see your cart",
+      showConfirmButton: true,
+      confirmButtonText: "Sign In",
+      confirmButtonColor: "#4f39f6",
+      showCancelButton: true,
+      cancelButtonText: "Cancel",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        window.location.href = "../authentication/signin/signin.html";
+      } else {
+        window.location.href = "#";
+        signed.classList.add("hidden");
+      }
+    });
+  }
+}
+
+async function addToWishlist(prodId) {
+  document.querySelector(".loader").classList.remove("hidden");
+  document.querySelector(".loader").classList.add("fixed");
+  let numOfWish = parseInt(document.querySelector(".numOfWishItems").innerHTML);
+  if (localStorage.getItem("token")) {
+    let response = await fetch(
+      `https://ecommerce.routemisr.com/api/v1/wishlist`,
+      {
+        method: "POST",
+        headers: {
+          token: localStorage.getItem("token"),
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          productId: prodId,
+        }),
+      },
+    );
+    response.json().then((result) => {
+      if (result.data.length === numOfWish) {
+        Swal.fire({
+          icon: "info",
+          title: "Product already added to wishlist",
+          showConfirmButton: false,
+          timer: 1500,
+        }).then(() => {
+          document.querySelector(".loader").classList.remove("fixed");
+          document.querySelector(".loader").classList.add("hidden");
+        });
+      } else {
+        Swal.fire({
+          icon: "success",
+          title: "Product added to wishlist successfully",
+          showConfirmButton: false,
+          timer: 1500,
+        }).then(() => {
+          getWishlistNums(localStorage.getItem("token"));
+        });
+      }
+    });
+  } else {
+    document.querySelector(".loader").classList.remove("fixed");
+    document.querySelector(".loader").classList.add("hidden");
+    Swal.fire({
+      icon: "info",
+      title: "You are not signed in",
+      text: "You should sign in first to see your cart",
+      showConfirmButton: true,
+      confirmButtonText: "Sign In",
+      confirmButtonColor: "#4f39f6",
+      showCancelButton: true,
+      cancelButtonText: "Cancel",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        window.location.href = "../authentication/signin/signin.html";
+      } else {
+        window.location.href = "#";
+        signed.classList.add("hidden");
+      }
+    });
+  }
 }
 
 function signOut() {

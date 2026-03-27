@@ -24,7 +24,7 @@ window.onload = function () {
       if (result.isConfirmed) {
         window.location.href = "../authentication/signin/signin.html";
       } else {
-        window.location.href = "../index.html";
+        window.location.href = "#";
         signed.classList.add("hidden");
       }
     });
