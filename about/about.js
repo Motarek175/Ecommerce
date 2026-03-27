@@ -14,11 +14,6 @@ window.onload = function () {
   }
 };
 
-function signOut() {
-  localStorage.removeItem("token");
-  window.location.href = "../index.html";
-}
-
 async function getCartnums(token) {
   const response = await fetch("https://ecommerce.routemisr.com/api/v1/cart", {
     headers: {
@@ -53,4 +48,14 @@ async function getWishlistNums(token) {
     });
   document.querySelector(".loader").classList.remove("fixed");
   document.querySelector(".loader").classList.add("hidden");
+}
+
+function signOut() {
+  Swal.fire({
+    icon: "success",
+    title: "You are signed out successfully",
+  }).then(() => {
+    localStorage.removeItem("token");
+    window.location.href = "../index.html";
+  });
 }

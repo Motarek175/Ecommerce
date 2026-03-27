@@ -16,16 +16,6 @@ window.onload = function () {
   displayProduct(prodId);
 };
 
-function signOut() {
-  Swal.fire({
-    icon: "success",
-    title: "You are signed out successfully",
-  }).then(() => {
-    localStorage.removeItem("token");
-    window.location.href = "../index.html";
-  });
-}
-
 async function getCartnums(token) {
   const response = await fetch("https://ecommerce.routemisr.com/api/v1/cart", {
     headers: {
@@ -234,5 +224,15 @@ async function addToWishlist(prodId) {
         getWishlistNums(localStorage.getItem("token"));
       });
     }
+  });
+}
+
+function signOut() {
+  Swal.fire({
+    icon: "success",
+    title: "You are signed out successfully",
+  }).then(() => {
+    localStorage.removeItem("token");
+    window.location.href = "../index.html";
   });
 }

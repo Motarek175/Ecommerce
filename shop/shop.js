@@ -1,4 +1,6 @@
 window.onload = function () {
+  document.querySelector(".loader").classList.remove("hidden");
+  document.querySelector(".loader").classList.add("fixed");
   let signed = document.querySelector(".signed");
   let notSigned = document.querySelector(".notSigned");
   if (localStorage.getItem("token")) {
@@ -10,8 +12,6 @@ window.onload = function () {
     document.querySelector(".loader").classList.remove("fixed");
     document.querySelector(".loader").classList.add("hidden");
   }
-  document.querySelector(".loader").classList.remove("hidden");
-  document.querySelector(".loader").classList.add("fixed");
   getCategories();
   getProdcts();
 };
@@ -249,6 +249,11 @@ async function addToWishList(prodId) {
 }
 
 function signOut() {
-  localStorage.removeItem("token");
-  window.location.href = "../index.html";
+  Swal.fire({
+    icon: "success",
+    title: "You are signed out successfully",
+  }).then(() => {
+    localStorage.removeItem("token");
+    window.location.href = "../index.html";
+  });
 }
