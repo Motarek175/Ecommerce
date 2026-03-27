@@ -1,8 +1,4 @@
 window.onload = function () {
-  document.querySelector(".loader").classList.remove("hidden");
-  document.querySelector(".loader").classList.add("fixed");
-  getCategories();
-  getProdcts();
   let signed = document.querySelector(".signed");
   let notSigned = document.querySelector(".notSigned");
   if (localStorage.getItem("token")) {
@@ -14,6 +10,10 @@ window.onload = function () {
     document.querySelector(".loader").classList.remove("fixed");
     document.querySelector(".loader").classList.add("hidden");
   }
+  document.querySelector(".loader").classList.remove("hidden");
+  document.querySelector(".loader").classList.add("fixed");
+  getCategories();
+  getProdcts();
 };
 
 async function getCategories() {
@@ -46,7 +46,6 @@ async function getCategories() {
 function applyFilters() {
   document.querySelector(".loader").classList.remove("hidden");
   document.querySelector(".loader").classList.add("fixed");
-
   let categories = document.querySelectorAll(".filter input");
   let catIds = [];
   for (let i = 0; i < categories.length; i++) {
@@ -82,7 +81,7 @@ async function getProdcts() {
   let products = result.data;
   displayProducts(products);
 }
-// random number
+
 function displayProducts(products) {
   if (products.length == 0) {
     let productContainer = document.querySelector(".productContainer");
