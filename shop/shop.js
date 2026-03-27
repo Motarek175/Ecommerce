@@ -44,8 +44,6 @@ async function getCategories() {
 }
 
 function applyFilters() {
-  document.querySelector(".loader").classList.remove("hidden");
-  document.querySelector(".loader").classList.add("fixed");
   let categories = document.querySelectorAll(".filter input");
   let catIds = [];
   for (let i = 0; i < categories.length; i++) {
