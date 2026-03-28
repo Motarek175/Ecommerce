@@ -46,6 +46,11 @@ function getData() {
   }
 }
 
+function togglePassword() {
+  const input = document.getElementById("password");
+  input.type = input.type === "password" ? "text" : "password";
+}
+
 async function calling(data) {
   const response = await fetch(
     "https://ecommerce.routemisr.com/api/v1/auth/signup",
