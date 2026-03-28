@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cart</title>
-    <link rel="stylesheet" href="cart.css" />
+    <title>CheckOut</title>
+    <link rel="stylesheet" href="checkout.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
@@ -66,7 +66,7 @@
           <div class="flex items-center justify-center gap-3">
             <!-- Wishlist -->
             <a
-              href="../wishlist/wishlist.html"
+              href="./wishlist.html"
               class="text-black cursor-pointer text-center relative"
             >
               <i class="fas fa-heart text-2xl text-red-600 outline-0"></i>
@@ -78,7 +78,7 @@
             </a>
             <!-- Cart -->
             <a
-              href="./cart.html"
+              href="../cart/cart.html"
               class="text-black cursor-pointer text-center relative"
             >
               <i
@@ -99,7 +99,6 @@
                 <!-- person icon -->
                 <i class="fa-regular fa-circle-user text-3xl"></i>
               </button>
-
               <el-menu
                 anchor="bottom end"
                 popover
@@ -170,63 +169,132 @@
         </div>
       </el-disclosure>
     </nav>
-    <!-- cart section -->
-    <div class="mx-auto mt-6 py-12 px-2 sm:px-6 lg:px-8">
-      <div class="flex justify-between">
-        <h2 class="text-xl font-semibold text-slate-900">Your shopping cart</h2>
-        <div class="flex items-center gap-x-4">
-          <button
-            onclick="clearCart()"
-            class="cursor-pointer bg-red-600 text-white flex items-center gap-x-2 px-6 py-3 rounded-3xl font-medium transition-colors border border-transparent hover:border-indigo-200"
-          >
-            <i class="fa-solid fa-trash-can"></i>
-            <span>Clear all</span>
-          </button>
-          <a
-            href="../shop/shop.html"
-            class="flex items-center gap-x-2 px-6 py-3 bg-white border border-gray-300 hover:border-indigo-300 text-gray-700 hover:text-indigo-600 rounded-3xl font-medium transition-colors"
-          >
-            <i class="fa-solid fa-arrow-left"></i>
-            <span>Continue shopping</span>
-          </a>
+
+    <!-- checkout -->
+    <div class="mt-12 mx-auto py-2 px-2 sm:px-6 lg:px-8 check">
+      <div class="flex max-md:flex-col gap-12 max-lg:gap-4 h-full">
+        <div
+          class="shadow-[0_0_20px_#C5CAE9] rounded-xl md:h-screen md:sticky md:top-0 md:min-w-[370px]"
+        >
+          <div class="relative h-full">
+            <div class="px-6 py-8 md:overflow-auto md:h-screen">
+              <div class="space-y-4 userCart"></div>
+              <hr class="border-gray-300 my-8" />
+              <div>
+                <ul class="text-slate-500 font-medium space-y-4">
+                  <li class="flex flex-wrap gap-4 text-sm">
+                    Subtotal
+                    <span
+                      class="subtotal ml-auto font-semibold text-slate-900"
+                    ></span>
+                  </li>
+                  <li class="flex flex-wrap gap-4 text-sm">
+                    Shipping
+                    <span
+                      class="shipping ml-auto font-semibold text-slate-900"
+                    ></span>
+                  </li>
+                  <hr class="border-slate-300" />
+                  <li
+                    class="flex flex-wrap gap-4 text-[15px] font-semibold text-slate-900"
+                  >
+                    Total <span class="total ml-auto"></span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="grid lg:grid-cols-3 gap-4 relative mt-6">
-        <div class="cartSection lg:col-span-2 space-y-4"></div>
 
         <div
-          class="bg-white h-max rounded-md p-6 shadow-sm border border-gray-300 sticky top-0"
+          class="max-w-4xl w-full h-max rounded-md px-4 py-8 max-md:-order-1"
         >
-          <h3 class="text-base font-semibold text-slate-900">Order Summary</h3>
-          <ul
-            class="text-slate-500 font-medium text-sm divide-y divide-gray-300 mt-4"
-          >
-            <li class="flex flex-wrap gap-4 py-3">
-              Subtotal
-              <span class="totalPrice ml-auto font-semibold text-slate-900"
-                >0</span
-              >
-            </li>
-            <li class="flex flex-wrap gap-4 py-3">
-              Shipping
-              <span class="shipping ml-auto font-semibold text-slate-900"
-                >0</span
-              >
-            </li>
-            <li class="flex flex-wrap gap-4 py-3 font-semibold text-slate-900">
-              Total <span class="total ml-auto">0</span>
-            </li>
-          </ul>
+          <form>
+            <div>
+              <h2 class="text-xl text-slate-900 font-semibold mb-6">
+                Delivery Details
+              </h2>
+              <div class="grid lg:grid-cols-2 gap-y-6 gap-x-4">
+                <div>
+                  <label class="text-sm text-slate-900 font-medium block mb-2"
+                    >Name</label
+                  >
+                  <input
+                    id="name"
+                    type="text"
+                    placeholder="Enter First Name"
+                    class="px-4 py-2.5 bg-white border border-gray-400 text-slate-900 w-full text-sm rounded-md focus:outline-blue-600"
+                  />
+                </div>
+                <div>
+                  <label class="text-sm text-slate-900 font-medium block mb-2"
+                    >Email</label
+                  >
+                  <input
+                    id="email"
+                    type="email"
+                    placeholder="Enter Email"
+                    class="px-4 py-2.5 bg-white border border-gray-400 text-slate-900 w-full text-sm rounded-md focus:outline-blue-600"
+                  />
+                </div>
+                <div>
+                  <label class="text-sm text-slate-900 font-medium block mb-2"
+                    >Phone No.</label
+                  >
+                  <input
+                    id="phone"
+                    type="text"
+                    placeholder="Enter Phone No."
+                    class="px-4 py-2.5 bg-white border border-gray-400 text-slate-900 w-full text-sm rounded-md focus:outline-blue-600"
+                  />
+                </div>
+                <div>
+                  <label class="text-sm text-slate-900 font-medium block mb-2"
+                    >Address Line</label
+                  >
+                  <input
+                    id="address"
+                    type="text"
+                    placeholder="Enter Address Line"
+                    class="px-4 py-2.5 bg-white border border-gray-400 text-slate-900 w-full text-sm rounded-md focus:outline-blue-600"
+                  />
+                </div>
+                <div>
+                  <label class="text-sm text-slate-900 font-medium block mb-2"
+                    >City</label
+                  >
+                  <input
+                    id="city"
+                    type="text"
+                    placeholder="Enter City"
+                    class="px-4 py-2.5 bg-white border border-gray-400 text-slate-900 w-full text-sm rounded-md focus:outline-blue-600"
+                  />
+                </div>
+                <div>
+                  <label class="text-sm text-slate-900 font-medium block mb-2"
+                    >Postal Code</label
+                  >
+                  <input
+                    id="postalCode"
+                    type="text"
+                    placeholder="Enter Postal Code"
+                    class="px-4 py-2.5 bg-white border border-gray-400 text-slate-900 w-full text-sm rounded-md focus:outline-blue-600"
+                  />
+                </div>
+              </div>
+            </div>
+          </form>
           <button
             type="button"
-            class="mt-6 text-sm font-medium px-4 py-2.5 tracking-wide w-full bg-blue-600 hover:bg-blue-700 text-white rounded-md cursor-pointer"
-            onclick="window.location.href = '../checkout/checkout.html'"
+            class="w-fit mt-8 float-end rounded-md px-4 py-2.5 text-md font-medium tracking-wide bg-blue-600 hover:bg-blue-700 text-white cursor-pointer"
+            onclick="placeOrder()"
           >
-            Proceed to Checkout
+            Place Order
           </button>
         </div>
       </div>
     </div>
+
     <!-- footer -->
     <footer
       class="mx-auto mt-12 px-2 sm:px-6 lg:px-8 shadow-[0_-2px_10px_#C5CAE9]"
@@ -331,6 +399,6 @@
       src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1"
       type="module"
     ></script>
-    <script src="cart.js"></script>
+    <script src="checkout.js"></script>
   </body>
 </html>
