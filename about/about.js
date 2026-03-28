@@ -9,10 +9,28 @@ window.onload = function () {
     getWishlistNums(localStorage.getItem("token"));
     const decoded = jwt_decode(localStorage.getItem("token"));
     document.querySelector(".userName").innerHTML = decoded.name;
+  const btn = document.getElementById("profileBtn");
+  const menu = document.getElementById("dropdownMenu");
+  btn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    menu.classList.toggle("hidden");
+  });
+  document.addEventListener("click", () => {
+    menu.classList.add("hidden");
+  });
   } else {
     document.querySelector(".loader").classList.remove("fixed");
     document.querySelector(".loader").classList.add("hidden");
     signed.classList.add("hidden");
+  const btn = document.getElementById("profileBtn");
+  const menu = document.getElementById("dropdownMenu");
+  btn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    menu.classList.toggle("hidden");
+  });
+  document.addEventListener("click", () => {
+    menu.classList.add("hidden");
+  });
   }
 };
 
@@ -53,15 +71,7 @@ async function getWishlistNums(token) {
   document.querySelector(".loader").classList.add("hidden");
 }
 
-const btn = document.getElementById("profileBtn");
-const menu = document.getElementById("dropdownMenu");
-btn.addEventListener("click", (e) => {
-  e.stopPropagation();
-  menu.classList.toggle("hidden");
-});
-document.addEventListener("click", () => {
-  menu.classList.add("hidden");
-});
+
 
 function signOut() {
   Swal.fire({
