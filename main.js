@@ -136,7 +136,7 @@ function newArrivals(products) {
     let randNum = Math.floor(Math.random() * products.length);
     newArrivals.innerHTML += `
                 <div class="group" id="${products[randNum].id}">
-              <div onclick="window.location.href = '../product/product.html?id=${products[randNum].id}'" class="relative cursor-pointer overflow-hidden rounded-lg mb-4">
+              <div onclick="window.location.href = './product/product.html?id=${products[randNum].id}'" class="relative cursor-pointer overflow-hidden rounded-lg mb-4">
                 <img
                   src="${products[randNum].imageCover}"
                   alt="${products[randNum].slug}"
