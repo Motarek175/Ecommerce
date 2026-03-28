@@ -126,7 +126,7 @@ function newArrivals(products) {
                 />
               </div>
               <div>
-                <h3 onclick="window.location.href = '../product/product.html?id=${products[randNum].id}'" class="cursor-pointer font-medium text-gray-900">
+                <h3 onclick="window.location.href = './product/product.html?id=${products[randNum].id}'" class="cursor-pointer font-medium text-gray-900">
                   ${products[randNum].title.slice(0, 30)}
                 </h3>
                 <h3 class="font-small text-gray-500 mb-2">
