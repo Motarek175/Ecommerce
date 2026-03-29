@@ -115,12 +115,17 @@ document.getElementById("showMoreBtn").addEventListener("click", () => {
 function displayProducts(products) {
   let productContainer = document.querySelector(".productContainer");
   let showMoreBtn = document.getElementById("showMoreBtn");
-  if (currentIndex === 0) {
-    productContainer.innerHTML = "";
-  }
-  let nextProducts = products.slice(currentIndex, currentIndex + step);
-  for (let i = 0; i < nextProducts.length; i++) {
-    productContainer.innerHTML += `
+
+  if (products.length == 0) {
+    productContainer.innerHTML = `<h1 class="text-2xl font-bold text-gray-700">No products found</h1>`;
+    showMoreBtn.classList.add("hidden");
+  } else {
+    if (currentIndex === 0) {
+      productContainer.innerHTML = "";
+    }
+    let nextProducts = products.slice(currentIndex, currentIndex + step);
+    for (let i = 0; i < nextProducts.length; i++) {
+      productContainer.innerHTML += `
       <div id = "${nextProducts[i].id}" class="shadow-md p-4 rounded-2xl">
       <img
       src="${nextProducts[i].imageCover}"
@@ -150,18 +155,19 @@ function displayProducts(products) {
     </div>
     </div>
     `;
+    }
+
+    currentIndex += step;
+
+    if (currentIndex < products.length) {
+      showMoreBtn.classList.remove("hidden");
+    } else {
+      showMoreBtn.classList.add("hidden");
+    }
+
+    document.querySelector(".loader").classList.remove("fixed");
+    document.querySelector(".loader").classList.add("hidden");
   }
-
-  currentIndex += step;
-
-  if (currentIndex < products.length) {
-    showMoreBtn.classList.remove("hidden");
-  } else {
-    showMoreBtn.classList.add("hidden");
-  }
-
-  document.querySelector(".loader").classList.remove("fixed");
-  document.querySelector(".loader").classList.add("hidden");
 }
 
 async function getCartnums(token) {
