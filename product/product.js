@@ -221,7 +221,7 @@ async function addToCart(prodId) {
       if (result.isConfirmed) {
         window.location.href = "../authentication/signin/signin.html";
       } else {
-        window.location.href = "#";
+        window.location.reload();
         signed.classList.add("hidden");
       }
     });
@@ -284,7 +284,7 @@ async function addToWishlist(prodId) {
       if (result.isConfirmed) {
         window.location.href = "../authentication/signin/signin.html";
       } else {
-        window.location.href = "#";
+        window.location.reload();
         signed.classList.add("hidden");
       }
     });
