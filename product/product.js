@@ -211,7 +211,7 @@ async function addToCart(prodId) {
     Swal.fire({
       icon: "info",
       title: "You are not signed in",
-      text: "You should sign in first to see your cart",
+      text: "You should sign in first to add this product to your cart",
       showConfirmButton: true,
       confirmButtonText: "Sign In",
       confirmButtonColor: "#4f39f6",
@@ -274,7 +274,7 @@ async function addToWishlist(prodId) {
     Swal.fire({
       icon: "info",
       title: "You are not signed in",
-      text: "You should sign in first to see your cart",
+      text: "You should sign in first to add this product to your wishlist",
       showConfirmButton: true,
       confirmButtonText: "Sign In",
       confirmButtonColor: "#4f39f6",
